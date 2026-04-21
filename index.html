@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lumo Candles — Handmade Scented Candles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF6F0;
+    --beige: #EDE4D4;
+    --sand: #D4C4A8;
+    --brown: #3B2715;
+    --brown-mid: #6B4226;
+    --brown-light: #A0724A;
+    --warm-white: #FFFDF9;
+    --text-dark: #2A1A0E;
+    --text-muted: #7A6050;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+    --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-white);
+    color: var(--text-dark);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    height: 72px;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(164,130,95,0.15);
+    transition: box-shadow 0.3s;
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--brown);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--brown-light);
+  }
+
+  nav {
+    display: flex;
+    gap: 2.4rem;
+    list-style: none;
+  }
+
+  nav a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    text-decoration: none;
+    position: relative;
+    transition: color var(--transition);
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: var(--brown-light);
+    transition: width var(--transition);
+  }
+
+  nav a:hover { color: var(--brown-mid); }
+  nav a:hover::after { width: 100%; }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+  }
+
+  .cart-icon {
+    position: relative;
+    cursor: pointer;
+    color: var(--brown);
+    transition: color var(--transition);
+  }
+
+  .cart-icon:hover { color: var(--brown-light); }
+
+  .cart-icon svg { width: 22px; height: 22px; }
+
+  .cart-badge {
+    position: absolute;
+    top: -6px; right: -8px;
+    background: var(--brown-light);
+    color: white;
+    border-radius: 50%;
+    width: 16px; height: 16px;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--brown);
+    transition: var(--transition);
+  }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1602523961358-f9f03dd557db?w=1600&q=80') center/cover no-repeat;
+    transform: scale(1.06);
+    animation: slowzoom 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes slowzoom {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1.0); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      rgba(42,26,14,0.62) 0%,
+      rgba(42,26,14,0.3) 55%,
+      rgba(42,26,14,0.08) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 4rem;
+    max-width: 680px;
+    animation: fadeup 1.1s ease both;
+  }
+
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 1.4rem;
+    animation: fadeup 1.1s 0.15s ease both;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--warm-white);
+    margin-bottom: 1.4rem;
+    animation: fadeup 1.1s 0.25s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sand);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,253,249,0.8);
+    margin-bottom: 2.4rem;
+    max-width: 420px;
+    line-height: 1.75;
+    animation: fadeup 1.1s 0.35s ease both;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    background: var(--cream);
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 0.76rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    font-weight: 500;
+    border: 1.5px solid var(--cream);
+    transition: all var(--transition);
+    animation: fadeup 1.1s 0.45s ease both;
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--cream);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.85rem 2.2rem;
+    background: transparent;
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1.5px solid var(--brown);
+    transition: all var(--transition);
+  }
+
+  .btn-outline:hover {
+    background: var(--brown);
+    color: var(--cream);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    animation: fadeup 1.4s 0.8s ease both;
+  }
+
+  .hero-scroll span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,253,249,0.6);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,253,249,0.5), transparent);
+    animation: scrollpulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollpulse {
+    0%,100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+
+  /* ── SECTION COMMON ─────────────────────────────────────── */
+  section { padding: 7rem 4rem; }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brown-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--brown);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--brown-mid); }
+
+  .section-sub {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    line-height: 1.75;
+  }
+
+  /* ── MARQUEE ────────────────────────────────────────────── */
+  .marquee-bar {
+    background: var(--brown);
+    color: var(--sand);
+    padding: 0.85rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    gap: 3rem;
+    animation: marquee 22s linear infinite;
+  }
+
+  .marquee-track span {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .marquee-dot {
+    opacity: 0.45;
+    margin: 0 0.4rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── FEATURED PRODUCTS ──────────────────────────────────── */
+  .products-section { background: var(--cream); }
+
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+  }
+
+  .product-card {
+    background: var(--warm-white);
+    cursor: pointer;
+    group: true;
+    transition: transform var(--transition);
+  }
+
+  .product-card:hover { transform: translateY(-4px); }
+
+  .product-img {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--beige);
+  }
+
+  .product-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  .product-card:hover .product-img img { transform: scale(1.06); }
+
+  .product-tag {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    background: var(--brown);
+    color: var(--sand);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .product-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(42,26,14,0.0);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 1.4rem;
+    transition: background var(--transition);
+  }
+
+  .product-card:hover .product-overlay { background: rgba(42,26,14,0.22); }
+
+  .quick-add {
+    opacity: 0;
+    transform: translateY(10px);
+    background: var(--cream);
+    color: var(--brown);
+    border: none;
+    padding: 0.65rem 1.4rem;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-weight: 500;
+  }
+
+  .product-card:hover .quick-add {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .quick-add:hover { background: var(--brown); color: var(--cream); }
+
+  .product-info {
+    padding: 1.1rem 0.2rem 0.6rem;
+  }
+
+  .product-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--brown);
+    margin-bottom: 0.3rem;
+  }
+
+  .product-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+
+  .product-price {
+    font-size: 0.88rem;
+    color: var(--brown-mid);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* ── BRAND STORY ────────────────────────────────────────── */
+  .story-section {
+    background: var(--warm-white);
+    padding: 0;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 580px;
+  }
+
+  .story-img {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s ease;
+  }
+
+  .story-img:hover img { transform: scale(1.04); }
+
+  .story-content {
+    background: var(--beige);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem;
+  }
+
+  .story-content blockquote {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1.5;
+    border-left: 2px solid var(--brown-light);
+    padding-left: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .story-body {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 2.4rem;
+  }
+
+  .story-sig {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--brown-mid);
+  }
+
+  /* ── VALUE PROPS ────────────────────────────────────────── */
+  .values-section {
+    background: var(--brown);
+    padding: 5rem 4rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .value-item {
+    text-align: center;
+    padding: 2.4rem 1.4rem;
+    border: 1px solid rgba(212,196,168,0.2);
+    transition: border-color var(--transition), background var(--transition);
+  }
+
+  .value-item:hover {
+    border-color: rgba(212,196,168,0.5);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .value-icon {
+    width: 44px; height: 44px;
+    margin: 0 auto 1.4rem;
+    color: var(--sand);
+  }
+
+  .value-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.7rem;
+  }
+
+  .value-desc {
+    font-size: 0.82rem;
+    color: rgba(212,196,168,0.75);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── COLLECTION BANNER ──────────────────────────────────── */
+  .banner-section {
+    padding: 0;
+    background: var(--beige);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 440px;
+  }
+
+  .banner-img {
+    overflow: hidden;
+  }
+
+  .banner-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .banner-img:hover img { transform: scale(1.05); }
+
+  .banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 5rem;
+  }
+
+  /* ── NEWSLETTER ─────────────────────────────────────────── */
+  .newsletter-section {
+    background: var(--cream);
+    text-align: center;
+    padding: 6rem 4rem;
+  }
+
+  .newsletter-section .section-title { margin-bottom: 0.6rem; }
+
+  .newsletter-section .section-sub {
+    margin: 0 auto 2.4rem;
+    text-align: center;
+  }
+
+  .newsletter-form {
+    display: flex;
+    max-width: 460px;
+    margin: 0 auto;
+    border: 1.5px solid var(--sand);
+    background: var(--warm-white);
+    overflow: hidden;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    border: none;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--brown);
+    outline: none;
+    letter-spacing: 0.05em;
+  }
+
+  .newsletter-form input::placeholder { color: var(--text-muted); }
+
+  .newsletter-form button {
+    background: var(--brown);
+    color: var(--sand);
+    border: none;
+    padding: 0 1.6rem;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background var(--transition);
+    white-space: nowrap;
+  }
+
+  .newsletter-form button:hover { background: var(--brown-mid); }
+
+  .newsletter-note {
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer {
+    background: var(--text-dark);
+    color: var(--sand);
+    padding: 4rem 4rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(160,114,74,0.2);
+  }
+
+  .footer-brand .logo {
+    font-size: 1.3rem;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.82rem;
+    color: rgba(212,196,168,0.65);
+    line-height: 1.7;
+    margin-bottom: 1.6rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .social-link {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(160,114,74,0.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sand);
+    text-decoration: none;
+    transition: all var(--transition);
+  }
+
+  .social-link:hover {
+    border-color: var(--sand);
+    background: rgba(212,196,168,0.1);
+  }
+
+  .social-link svg { width: 15px; height: 15px; }
+
+  .footer-col h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.82rem;
+    color: rgba(212,196,168,0.65);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer-col ul li a:hover { color: var(--sand); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 0.73rem;
+    color: rgba(212,196,168,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 1.6rem;
+  }
+
+  .footer-legal a {
+    font-size: 0.73rem;
+    color: rgba(212,196,168,0.4);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color var(--transition);
+  }
+
+  .footer-legal a:hover { color: var(--sand); }
+
+  /* ── MOBILE NAV OVERLAY ─────────────────────────────────── */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--brown);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+  }
+
+  .mobile-nav.open { display: flex; }
+
+  .mobile-nav a {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color var(--transition);
+  }
+
+  .mobile-nav a:hover { color: var(--sand); }
+
+  .close-nav {
+    position: absolute;
+    top: 1.6rem; right: 2rem;
+    background: none;
+    border: none;
+    color: var(--sand);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* ── ANIMATIONS ON SCROLL ───────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 900px) {
+    header { padding: 0 1.8rem; }
+    nav { display: none; }
+    .menu-toggle { display: flex; }
+    section { padding: 5rem 1.8rem; }
+    .story-grid { grid-template-columns: 1fr; }
+    .story-img { height: 340px; }
+    .story-content { padding: 3rem 2rem; }
+    .values-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .banner-section { grid-template-columns: 1fr; }
+    .banner-img { height: 280px; }
+    .banner-content { padding: 3rem 2rem; }
+    .hero-content { padding: 0 1.8rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .products-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+
+  @media (max-width: 600px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .hero h1 { font-size: 2.4rem; }
+    .newsletter-form { flex-direction: column; border: none; gap: 0.7rem; }
+    .newsletter-form input { border: 1.5px solid var(--sand); padding: 0.9rem 1rem; }
+    .newsletter-form button { padding: 0.9rem 1rem; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────── -->
+<header id="header">
+  <a href="#" class="logo">Lumo <span>Candles</span></a>
+  <nav>
+    <a href="#">Shop</a>
+    <a href="#">Collections</a>
+    <a href="#">Our Story</a>
+    <a href="#">Journal</a>
+    <a href="#">Contact</a>
+  </nav>
+  <div class="header-right">
+    <div class="cart-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <span class="cart-badge">0</span>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-nav" id="closeNav">✕</button>
+  <a href="#">Shop</a>
+  <a href="#">Collections</a>
+  <a href="#">Our Story</a>
+  <a href="#">Journal</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Handcrafted in Small Batches</p>
+    <h1>Light the<br><em>Stillness</em><br>Within</h1>
+    <p class="hero-sub">Slow-poured soy candles crafted with botanical fragrance blends — for spaces that breathe, and moments that linger.</p>
+    <a href="#" class="btn-primary">Shop the Collection</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ────────────────────────────────────── -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track">
+    <span>100% Natural Soy Wax</span><span class="marquee-dot">·</span>
+    <span>Hand-Poured in Small Batches</span><span class="marquee-dot">·</span>
+    <span>Phthalate-Free Fragrances</span><span class="marquee-dot">·</span>
+    <span>Sustainable Packaging</span><span class="marquee-dot">·</span>
+    <span>Complimentary Gift Wrap</span><span class="marquee-dot">·</span>
+    <span>Free Shipping Over ₹999</span><span class="marquee-dot">·</span>
+    <!-- duplicate for seamless loop -->
+    <span>100% Natural Soy Wax</span><span class="marquee-dot">·</span>
+    <span>Hand-Poured in Small Batches</span><span class="marquee-dot">·</span>
+    <span>Phthalate-Free Fragrances</span><span class="marquee-dot">·</span>
+    <span>Sustainable Packaging</span><span class="marquee-dot">·</span>
+    <span>Complimentary Gift Wrap</span><span class="marquee-dot">·</span>
+    <span>Free Shipping Over ₹999</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- ── FEATURED PRODUCTS ──────────────────────────── -->
+<section class="products-section">
+  <div class="products-header reveal">
+    <div>
+      <p class="section-eyebrow">Bestsellers</p>
+      <h2 class="section-title">Curated for <em>Your Space</em></h2>
+    </div>
+    <a href="#" class="btn-outline">View All</a>
+  </div>
+
+  <div class="products-grid">
+    <!-- Card 1 -->
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&q=80" alt="Amber & Cedarwood Candle" loading="lazy"/>
+        <span class="product-tag">Bestseller</span>
+        <div class="product-overlay">
+          <button class="quick-add">Quick Add</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Amber & Cedarwood</div>
+        <div class="product-note">Warm · Grounding · 45hr burn</div>
+        <div class="product-price">₹ 1,250</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1617651523049-6e7d42c0b2c9?w=600&q=80" alt="Rose & Sandalwood Candle" loading="lazy"/>
+        <div class="product-overlay">
+          <button class="quick-add">Quick Add</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Rose & Sandalwood</div>
+        <div class="product-note">Floral · Soft · 50hr burn</div>
+        <div class="product-price">₹ 1,450</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1602523961358-f9f03dd557db?w=600&q=80" alt="Vetiver & Smoke Candle" loading="lazy"/>
+        <span class="product-tag">New</span>
+        <div class="product-overlay">
+          <button class="quick-add">Quick Add</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Vetiver & Smoke</div>
+        <div class="product-note">Earthy · Mysterious · 40hr burn</div>
+        <div class="product-price">₹ 1,350</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="product-card reveal reveal-delay-4">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1595167247861-9b4b8d6a1b04?w=600&q=80" alt="Lavender & White Tea Candle" loading="lazy"/>
+        <div class="product-overlay">
+          <button class="quick-add">Quick Add</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Lavender & White Tea</div>
+        <div class="product-note">Calming · Fresh · 48hr burn</div>
+        <div class="product-price">₹ 1,200</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BRAND STORY ─────────────────────────────────── -->
+<div class="story-section">
+  <div class="story-grid">
+    <div class="story-img reveal">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Candle making craft" loading="lazy"/>
+    </div>
+    <div class="story-content reveal reveal-delay-2">
+      <p class="section-eyebrow">Our Story</p>
+      <blockquote>"Every candle is a conversation between fragrance and memory."</blockquote>
+      <p class="story-body">
+        Lumo began in a small studio in Coorg — a labour of love, wax, and afternoon light. We believe that fragrance is more than scent; it is an anchor to feeling, to place, to self.<br><br>
+        Each candle is hand-poured in batches of twenty, using 100% natural soy wax and botanically-sourced fragrance oils. No shortcuts. No rush. Just craft, done slowly.
+      </p>
+      <a href="#" class="btn-outline">Read Our Story</a>
+      <p class="story-sig" style="margin-top:2rem;">— Priya, Founder</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── VALUE PROPS ─────────────────────────────────── -->
+<section class="values-section">
+  <div class="values-grid">
+    <div class="value-item reveal">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+          <path d="M8 12h8M12 8v8"/>
+        </svg>
+      </div>
+      <h3 class="value-title">Handmade with Intention</h3>
+      <p class="value-desc">Poured in batches of twenty, each candle is crafted by hand in our Coorg studio — never rushed, never mass-produced.</p>
+    </div>
+    <div class="value-item reveal reveal-delay-2">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M17 8C8 10 5.9 16.17 3.82 19.34C2.61 21 4 23 6 22c3-1 5-6 12-7"/>
+          <path d="M17 8l4-4-4 4zM7 14s1-2 4-3"/>
+        </svg>
+      </div>
+      <h3 class="value-title">100% Natural Ingredients</h3>
+      <p class="value-desc">Soy wax. Cotton wicks. Phthalate-free fragrance oils. Clean ingredients, nothing synthetic, nothing that doesn't belong.</p>
+    </div>
+    <div class="value-item reveal reveal-delay-4">
+      <div class="value-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      </div>
+      <h3 class="value-title">Long-Lasting Fragrance</h3>
+      <p class="value-desc">Each candle carries 40–55 hours of fragrance — slow-burning, true-to-scent, and designed to fill a room beautifully.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── COLLECTION BANNER ───────────────────────────── -->
+<div class="banner-section">
+  <div class="banner-img reveal">
+    <img src="https://images.unsplash.com/photo-1531986627054-9cc1abf63d87?w=900&q=80" alt="Gift sets" loading="lazy"/>
+  </div>
+  <div class="banner-content reveal reveal-delay-2">
+    <p class="section-eyebrow">Gift Beautifully</p>
+    <h2 class="section-title">The Gift <em>Edit</em></h2>
+    <p class="section-sub" style="margin-bottom:2rem;">
+      Thoughtfully curated gift sets for every occasion — wrapped in our signature kraft & linen packaging, ready to give.
+    </p>
+    <a href="#" class="btn-outline">Explore Gift Sets</a>
+  </div>
+</div>
+
+<!-- ── NEWSLETTER ─────────────────────────────────── -->
+<section class="newsletter-section">
+  <div class="reveal">
+    <p class="section-eyebrow" style="text-align:center;">Stay in the Glow</p>
+    <h2 class="section-title" style="text-align:center;">Join the Lumo <em>Circle</em></h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 2.4rem;">Seasonal releases, behind-the-scenes craft notes, and a quiet 10% off your first order.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address" />
+      <button type="submit">Subscribe</button>
+    </div>
+    <p class="newsletter-note">No noise. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Lumo <span>Candles</span></a>
+      <p class="footer-tagline">Handmade scented candles crafted slowly, with purpose — for spaces that breathe and moments that linger.</p>
+      <div class="social-links">
+        <!-- Instagram -->
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <!-- Pinterest -->
+        <a href="#" class="social-link" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.27-5.39 1.27-5.39s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.61 1.97 1.93 0 3.42-2.04 3.42-4.98 0-2.6-1.87-4.42-4.54-4.42-3.09 0-4.9 2.32-4.9 4.72 0 .93.36 1.93.8 2.48.09.11.1.2.07.31l-.3 1.21c-.05.2-.16.24-.37.14-1.39-.65-2.26-2.68-2.26-4.32 0-3.51 2.55-6.74 7.35-6.74 3.86 0 6.86 2.75 6.86 6.42 0 3.83-2.41 6.91-5.76 6.91-1.12 0-2.18-.58-2.54-1.27l-.69 2.58c-.25.96-.93 2.16-1.39 2.89.42.13.86.2 1.31.2 5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">All Candles</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Gift Sets</a></li>
+        <li><a href="#">Limited Editions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Journal</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Stockists</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">Candle Care Guide</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Track Your Order</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Lumo Candles. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav  = document.getElementById('mobileNav');
+  const closeNav   = document.getElementById('closeNav');
+
+  menuToggle.addEventListener('click', () => mobileNav.classList.add('open'));
+  closeNav.addEventListener('click',   () => mobileNav.classList.remove('open'));
+
+  mobileNav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => mobileNav.classList.remove('open'))
+  );
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Header shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 24px rgba(42,26,14,0.08)' : 'none';
+  });
+</script>
+</body>
+</html>
